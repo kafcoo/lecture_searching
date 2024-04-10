@@ -19,9 +19,22 @@ def read_data(file_name, field):
         data = json.load(json_file)
     return data[field]
 
+
+def liner_search(numbers, my_number):
+    results = {"position":[], "count": 0}
+    count = 0
+    for i in range(len(numbers)):
+        if numbers[i] == my_number:
+            results["position"].append(i)
+            results["count"] += 1
+        else:
+            continue
+
+    return results
+
 def main():
-    unordered_numbers = read_data("sequential.json", "unordered_numbers")
-    print(unordered_numbers)
+    print(liner_search(read_data("sequential.json", "unordered_numbers"), my_number=9))
+
 
 if __name__ == '__main__':
     main()
