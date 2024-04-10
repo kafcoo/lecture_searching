@@ -32,6 +32,25 @@ def liner_search(numbers, my_number):
 
 
 def pattern_search(sequence, pattern):
+    positions = set()
+    sequence_index = 0
+    n = len(sequence)
+    m = len(pattern)
+    while sequence_index < n - m:
+        pattern_index = 0
+        while pattern_index < m:
+            if sequence[sequence_index + pattern_index] != pattern[pattern_index]:
+                break
+            pattern_index += 1
+        if pattern_index == m:
+            positions.add(sequence_index + m // 2)
+        sequence_index += 1
+
+    return positions
+
+
+"""
+# teoreticky ještě efektivnější řešení
     result = []
     for index in range(len(sequence) - len(pattern) + 1):
         if sequence[index:index + len(pattern)] == pattern:
@@ -40,7 +59,7 @@ def pattern_search(sequence, pattern):
     result = set(result)
     return result
 
-
+"""
 def main():
     print(liner_search(read_data("sequential.json", "unordered_numbers"), my_number=9))
     print(pattern_search(read_data("sequential.json", "dna_sequence"), pattern="ATA"))
