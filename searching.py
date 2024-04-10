@@ -27,9 +27,7 @@ def liner_search(numbers, my_number):
         if numbers[i] == my_number:
             results["position"].append(i)
             results["count"] += 1
-        else:
-            continue
-
+            
     return results
 
 def main():
